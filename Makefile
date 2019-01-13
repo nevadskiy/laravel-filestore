@@ -43,13 +43,15 @@ tinker:
 test:
 	@docker-compose exec php-cli vendor/bin/phpunit
 
+coverage:
+	docker-compose exec php-cli vendor/bin/phpunit --coverage-html tests/report
+
 autoload:
 	docker-compose exec php-cli composer dump-autoload
 
 perm:
 	sudo chmod -R 777 bootstrap/cache
 	sudo chmod -R 777 storage
-
 
 #---------------------------
 # Front-end
