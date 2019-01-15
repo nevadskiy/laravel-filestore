@@ -10,4 +10,11 @@ Route::group([
     'namespace' => 'Account',
 ], function () {
     Route::get('/', 'AccountController@index')->name('account.index');
+
+    Route::group([
+        'prefix' => 'files',
+    ], function () {
+        Route::get('create', 'FileController@create')->name('account.files.create.start');
+        Route::get('{file}/create', 'FileController@create')->name('account.files.create');
+    });
 });
