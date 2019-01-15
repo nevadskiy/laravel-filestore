@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('account.layouts._stats')
+
     <section class="section">
         <div class="container">
             <div class="columns">
