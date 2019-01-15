@@ -10,7 +10,7 @@ class FilePolicy
 {
     use HandlesAuthorization;
 
-    public function touch(File $file, User $user): bool
+    public function touch(User $user, File $file): bool
     {
         return $file->user_id === $user->id;
     }

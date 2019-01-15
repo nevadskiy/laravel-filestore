@@ -18,7 +18,7 @@ class FileController extends Controller
 
         $this->authorize('touch', $file);
 
-        // TODO: wip
+        return view('account.files.create', compact('file'));
     }
 
     private function createSkeletonFile(): File
