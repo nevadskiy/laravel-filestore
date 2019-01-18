@@ -3,7 +3,7 @@
 @section('account.content')
     <h1 class="title">Sell a file</h1>
     
-    <form action="#">
+    <form action="{{ route('account.files.store', $file) }}" method="POST">
         @csrf
 
         <div class="field">

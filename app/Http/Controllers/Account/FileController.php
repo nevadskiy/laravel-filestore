@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\File;
+use App\Http\Requests\File\StoreFileRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +20,20 @@ class FileController extends Controller
         $this->authorize('touch', $file);
 
         return view('account.files.create', compact('file'));
+    }
+
+    public function store(StoreFileRequest $request, File $file)
+    {
+        $this->authorize('touch', $file);
+
+        $file->fill($request->only(['title', 'overview', 'overview_short', 'price']));
+        $file->finished = true;
+        $file->save();
+
+        // Update this
+        // Flash message
+        // Go to the file index
+        return redirect()->route('account');
     }
 
     private function createSkeletonFile(): File
