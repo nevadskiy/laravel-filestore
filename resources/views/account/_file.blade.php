@@ -1,15 +1,5 @@
-<article class="media">
-    <div class="media-content">
-        <div class="content">
-            <p>
-                <strong>
-                    <a href="#">{{ $file->title }}</a>
-                </strong>
-                <br>
-                {{ $file->overview_short }}
-            </p>
-        </div>
-
+@component('files._file', compact('file'))
+    @slot('links')
         <div class="level">
             <div class="level-left">
                 <div class="level-item">
@@ -31,5 +21,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</article>
+    @endslot
+@endcomponent
