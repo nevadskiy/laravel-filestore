@@ -9,6 +9,13 @@ use App\Http\Controllers\Controller;
 
 class FileController extends Controller
 {
+    public function index()
+    {
+        $files = auth()->user()->files()->latest()->finished()->get();
+
+        return view('account.files.index', compact('files'));
+    }
+
     public function create(File $file)
     {
         if (!$file->exists) {
@@ -33,7 +40,7 @@ class FileController extends Controller
         // Update this
         // Flash message
         // Go to the file index
-        return redirect()->route('account');
+        return redirect()->route('account.files.index');
     }
 
     private function createSkeletonFile(): File
