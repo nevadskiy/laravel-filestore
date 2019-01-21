@@ -50,7 +50,7 @@ class FileController extends Controller
         }
 
         $file->update([
-            'live' => $request->get('live', false),
+            'live' => $request->has('live'),
             'price' => $request->get('price'),
         ]);
 
