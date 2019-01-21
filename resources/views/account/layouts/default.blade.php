@@ -10,6 +10,7 @@
                     @include('account.layouts._navigation')
                 </div>
                 <div class="column">
+                    @include('layouts._flash')
                     @yield('account.content')
                 </div>
             </div>

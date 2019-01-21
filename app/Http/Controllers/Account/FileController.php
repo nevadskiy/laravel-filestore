@@ -38,9 +38,9 @@ class FileController extends Controller
         $file->save();
 
         // Update this
-        // Flash message
+
         // Go to the file index
-        return redirect()->route('account.files.index');
+        return redirect()->route('account.files.index')->with('success', 'Thanks, submitted form review');
     }
 
     private function createSkeletonFile(): File
