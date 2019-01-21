@@ -10,6 +10,12 @@ class File extends Model
 {
     use SoftDeletes;
 
+    public const APPROVAL_PROPERTIES = [
+        'title',
+        'overview_short',
+        'overview',
+    ];
+
     protected $fillable = [
         'title',
         'overview_short',
@@ -52,5 +58,19 @@ class File extends Model
     public function approvals()
     {
         return $this->hasMany(FileApproval::class);
+    }
+
+    public function needsApproval(array $approvalProperties): bool
+    {
+        if ($this->currentPropsDifferToGiven($approvalProperties)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function currentPropsDifferToGiven(array $properties): bool
+    {
+        return array_only($this->toArray(), self::APPROVAL_PROPERTIES) !== $properties;
     }
 }
