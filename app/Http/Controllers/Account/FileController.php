@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Account;
 
 use App\File;
-use App\Http\Requests\File\StoreFileRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\File\{StoreFileRequest, UpdateFileRequest};
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
@@ -34,6 +34,11 @@ class FileController extends Controller
         $this->authorize('touch', $file);
 
         return view('account.files.edit', compact('file'));
+    }
+
+    public function update(File $file, UpdateFileRequest $request)
+    {
+
     }
 
     public function store(StoreFileRequest $request, File $file)
