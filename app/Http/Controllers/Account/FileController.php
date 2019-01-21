@@ -33,16 +33,20 @@ class FileController extends Controller
     {
         $this->authorize('touch', $file);
 
-        return view('account.files.edit', compact('file'));
+        $approval = $file->approvals()->first();
+
+        return view('account.files.edit', compact('file', 'approval'));
     }
 
     public function update(File $file, UpdateFileRequest $request)
     {
         $this->authorize('touch', $file);
 
-        if ($file->needsApproval($request->only(File::APPROVAL_PROPERTIES))) {
-            dd('need approval');
-            return;
+        $approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
+
+        if ($file->needsApproval($approvalProperties)) {
+            $file->createApproval($approvalProperties);
+            return back()->with('success', 'Thanks! We will review your changes soon.');
         }
 
         $file->update([
