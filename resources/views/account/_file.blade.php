@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="level-item">
-                    <a href="#">Make changes</a>
+                    <a href="{{ route('account.files.edit', $file) }}">Make changes</a>
                 </div>
             </div>
         </div>
