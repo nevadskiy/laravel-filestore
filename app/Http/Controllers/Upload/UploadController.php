@@ -27,11 +27,21 @@ class UploadController extends Controller
 
         $upload = $this->storeUpload($file, $uploadedFile);
 
-        Storage::disk('local')->putFileAs("files/{$file->identifier}", $uploadedFile, 'test.png');
+        Storage::disk('local')->putFileAs("files/{$file->identifier}", $uploadedFile, $upload->filename);
 
         return response()->json([
-            'id' => 1,
+            'id' => $upload->id,
         ]);
+    }
+
+    public function destroy(File $file, Upload $upload)
+    {
+        $this->authorize('touch', $file);
+        $this->authorize('touch', $upload);
+
+        // prevent all files from being removed when
+
+        $upload->delete();
     }
 
     private function storeUpload(File $file, UploadedFile $uploadedFile)

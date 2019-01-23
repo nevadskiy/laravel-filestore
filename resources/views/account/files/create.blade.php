@@ -6,8 +6,14 @@
     <form action="{{ route('account.files.store', $file) }}" method="POST">
         @csrf
 
+        <input type="hidden" name="uploads" value="{{ $file->id }}">
+
         <div class="field">
             <div id="file" class="dropzone"></div>
+
+            @if ($errors->has('uploads'))
+                <p class="help is-danger">{{ $errors->first('uploads') }}</p>
+            @endif
         </div>
 
         <div class="field">
