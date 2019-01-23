@@ -3,3 +3,9 @@
 
 // Bootstrap
 @import '~bulma/bulma';
+@import '~dropzone/dist/dropzone.css';
+
+.dropzone {
+  margin-bottom: 20px;
+  min-height: auto;
+}

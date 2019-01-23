@@ -2,9 +2,13 @@
 
 @section('account.content')
     <h1 class="title">Sell a file</h1>
-    
+
     <form action="{{ route('account.files.store', $file) }}" method="POST">
         @csrf
+
+        <div class="field">
+            <div id="file" class="dropzone"></div>
+        </div>
 
         <div class="field">
             <label for="title" class="label">{{ __('Title') }}</label>
@@ -85,3 +89,7 @@
         </div>
     </form>
 @endsection
+
+@push('scripts')
+    @include('files._file-upload-js')
+@endpush
