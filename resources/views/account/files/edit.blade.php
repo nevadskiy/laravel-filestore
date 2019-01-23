@@ -110,5 +110,5 @@
 @endsection
 
 @push('scripts')
-    @include('files._file-upload-js')
+    @include('account.files._file-upload-js')
 @endpush

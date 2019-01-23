@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Account;
 use App\File;
 use App\Http\Requests\File\{StoreFileRequest, UpdateFileRequest};
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
