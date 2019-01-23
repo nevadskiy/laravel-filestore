@@ -12,6 +12,14 @@
         @method('PATCH')
 
         <div class="field">
+            <div id="file" class="dropzone"></div>
+
+            @if ($errors->has('uploads'))
+                <p class="help is-danger">{{ $errors->first('uploads') }}</p>
+            @endif
+        </div>
+
+        <div class="field">
             <label for="title" class="label">{{ __('Title') }}</label>
             <div class="control">
                 <label for="live" class="checkbox">
@@ -100,3 +108,7 @@
         </div>
     </form>
 @endsection
+
+@push('scripts')
+    @include('files._file-upload-js')
+@endpush
