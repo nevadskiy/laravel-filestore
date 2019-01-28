@@ -17,15 +17,16 @@ class FileNewController extends Controller
 
     public function update(File $file)
     {
-//        $this->authorize('')
-
         $file->approve();
 
         return back()->with('success', "{$file->title} has been approved");
     }
 
-    public function destroy()
+    public function destroy(File $file)
     {
+        $file->uploads->each->delete();
+        $file->delete();
 
+        return back()->with('success', "{$file->title} has been rejected");
     }
 }
