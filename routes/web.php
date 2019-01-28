@@ -30,11 +30,17 @@ Route::group([
 ], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
 
-    Route::group(['prefix' => 'files'], function () {
-        Route::group(['prefix' => 'new'], function () {
+    Route::group(['prefix' => '/files'], function () {
+        Route::group(['prefix' => '/new'], function () {
             Route::get('/', 'FileNewController@index')->name('admin.files.new.index');
             Route::put('/{file}', 'FileNewController@update')->name('admin.files.new.update');
             Route::delete('/{file}', 'FileNewController@destroy')->name('admin.files.new.destroy');
+        });
+
+        Route::group(['prefix' => '/updated'], function () {
+            Route::get('/', 'FileUpdatedController@index')->name('admin.files.updated.index');
+//            Route::put('/{file}', 'FileNewController@update')->name('admin.files.new.update');
+//            Route::delete('/{file}', 'FileNewController@destroy')->name('admin.files.new.destroy');
         });
     });
 });
