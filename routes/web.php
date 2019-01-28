@@ -39,7 +39,7 @@ Route::group([
 
         Route::group(['prefix' => '/updated'], function () {
             Route::get('/', 'FileUpdatedController@index')->name('admin.files.updated.index');
-//            Route::put('/{file}', 'FileNewController@update')->name('admin.files.new.update');
+            Route::put('/{file}', 'FileUpdatedController@update')->name('admin.files.updated.update');
 //            Route::delete('/{file}', 'FileNewController@destroy')->name('admin.files.new.destroy');
         });
     });

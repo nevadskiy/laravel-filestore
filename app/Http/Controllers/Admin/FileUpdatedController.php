@@ -13,4 +13,18 @@ class FileUpdatedController extends Controller
 
         return view('admin.files.updated.index', compact('files'));
     }
+
+    public function update(File $file)
+    {
+        $file->mergeApprovalProperties();
+        $file->approveAllUploads();
+        $file->deleteAllApprovals();
+
+        return back()->with('success', "{$file->title} changes have been approved.");
+    }
+
+    public function destroy()
+    {
+
+    }
 }

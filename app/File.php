@@ -110,4 +110,16 @@ class File extends Model
             'approved' => true,
         ]);
     }
+
+    public function deleteAllApprovals()
+    {
+        $this->approvals()->delete();
+    }
+
+    public function mergeApprovalProperties()
+    {
+        $this->update(
+            array_only($this->approvals->first()->toArray(), self::APPROVAL_PROPERTIES)
+        );
+    }
 }
