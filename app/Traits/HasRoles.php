@@ -13,6 +13,6 @@ trait HasRoles
 
     public function hasRole($role)
     {
-        return $this->roles()->contains('name', $role);
+        return $this->roles->contains('name', $role);
     }
 }

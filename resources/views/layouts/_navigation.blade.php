@@ -27,6 +27,12 @@
                     <a href="{{ route('account.index') }}" class="navbar-item">
                         Your account
                     </a>
+
+                    @role('admin')
+                        <a href="{{ route('account.index') }}" class="navbar-item">
+                            Admin
+                        </a>
+                    @endrole
                 @else
                     <a href="{{ route('login') }}" class="navbar-item">
                         Sign in
