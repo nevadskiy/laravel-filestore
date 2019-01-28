@@ -19,7 +19,7 @@
                 <p>{{ $approval->overview }}</p>
             @endif
 
-            @if ($uploads = $file->uploads()->where('approved', false)->get())
+            @if ($uploads = $file->uploads()->unapproved()->get())
                 <strong>Uploads</strong>
                 @foreach ($uploads as $upload)
                     <strong>Overview</strong>
