@@ -29,7 +29,7 @@
                     </a>
 
                     @role('admin')
-                        <a href="{{ route('account.index') }}" class="navbar-item">
+                        <a href="{{ route('admin.index') }}" class="navbar-item">
                             Admin
                         </a>
                     @endrole
