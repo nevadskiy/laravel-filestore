@@ -4,6 +4,8 @@
     <section class="hero is-medium is-info">
         <div class="hero-body">
             <div class="container">
+                @include('layouts._flash')
+
                 <h3 class="subtitle is-spaced">
                     <strong>{{ $file->user->name }}</strong> is selling
                 </h3>
@@ -11,6 +13,10 @@
                 <h2 class="subtitle">
                     {{ $file->overview_short }}
                 </h2>
+
+                @if ($file->isFree())
+                    @include('files._checkout-form-free')
+                @endif
             </div>
         </div>
     </section>
