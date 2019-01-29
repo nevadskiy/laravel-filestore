@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\File;
 use App\Mail\Files\FileApproved;
 use App\Mail\Files\FileRejected;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class FileNewController extends Controller
 {
