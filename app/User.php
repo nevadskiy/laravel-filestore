@@ -32,4 +32,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(File::class);
     }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function isTheSameAs(User $user): bool
+    {
+        return $user->id === $this->id;
+    }
 }

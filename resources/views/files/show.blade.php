@@ -22,7 +22,12 @@
                         <h2 class="title">Overview</h2>
                         <p>{{ $file->overview }}</p>
                     </div>
-                    <div class="column"></div>
+                    <div class="column">
+                        <h2 class="title">What you get</h2>
+                        @foreach ($uploads as $upload)
+                            <p>{{ $upload->filename }}</p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
