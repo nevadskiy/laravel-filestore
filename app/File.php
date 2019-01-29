@@ -140,4 +140,14 @@ class File extends Model
             array_only($this->approvals->first()->toArray(), self::APPROVAL_PROPERTIES)
         );
     }
+
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
+    public function calculateCommission()
+    {
+        return (config('filestore.sales.commission') / 100) * $this->price;
+    }
 }
