@@ -29,6 +29,7 @@ Route::group([
     'middleware' => ['auth', 'admin']
 ], function () {
     Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::get('/{file}', 'FileController@show')->name('admin.files.show');
 
     Route::group(['prefix' => '/files'], function () {
         Route::group(['prefix' => '/new'], function () {

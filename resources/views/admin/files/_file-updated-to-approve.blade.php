@@ -3,7 +3,7 @@
         <div class="level">
             <div class="level-left">
                 <div class="level-item">
-                    <a href="#">Preview changes</a>
+                    <a href="{{ route('admin.files.show', $file) }}">Preview changes</a>
                 </div>
                 <div class="level-item">
                     <a role="button" onclick="event.preventDefault(); document.getElementById('approve-{{ $file->id }}').submit()">Approve</a>
