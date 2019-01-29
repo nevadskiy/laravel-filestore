@@ -150,4 +150,9 @@ class File extends Model
     {
         return (config('filestore.sales.commission') / 100) * $this->price;
     }
+
+    public function matchesSale(Sale $sale)
+    {
+        return $this->sales->contains($sale);
+    }
 }

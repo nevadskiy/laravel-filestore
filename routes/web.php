@@ -58,3 +58,4 @@ Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->nam
 
 // CHECK AUTH MIDDLEWARE (POSSIBLE ERRORS WITHIN File->Visible Method)
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
+Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');
