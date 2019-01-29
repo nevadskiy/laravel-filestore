@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\File;
+use App\Mail\Files\FileApproved;
+use App\Mail\Files\FileRejected;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -19,6 +21,8 @@ class FileNewController extends Controller
     {
         $file->approve();
 
+        Mail::to($file->user)->send(new FileApproved($file));
+
         return back()->with('success', "{$file->title} has been approved");
     }
 
@@ -26,6 +30,8 @@ class FileNewController extends Controller
     {
         $file->uploads->each->delete();
         $file->delete();
+
+        Mail::to($file->user)->send(new FileRejected($file));
 
         return back()->with('success', "{$file->title} has been rejected");
     }
