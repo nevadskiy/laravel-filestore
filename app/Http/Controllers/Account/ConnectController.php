@@ -10,16 +10,24 @@ class ConnectController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth', 'has.stripe']);
     }
 
     public function index()
     {
+        session()->put('stripe_token', str_random(60));
+
         return view('account.connect.index');
     }
 
     public function complete(Request $request, Guzzle $guzzle)
     {
+        // Check csrf token from stripe state
+        if (!$request->get('state') !== session()->pull('stripe_token')) {
+            return redirect()->route('account.connect');
+        }
+
+        // Check if code exists
         if (!$request->get('code')) {
             return redirect()->route('account.connect');
         }

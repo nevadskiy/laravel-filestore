@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AbortIfNotAdmin::class,
         'need.stripe' => \App\Http\Middleware\RedirectIfStripeNotConnected::class,
+        'has.stripe' => \App\Http\Middleware\RedirectIfStripeIsConnected::class,
     ];
 
     /**
