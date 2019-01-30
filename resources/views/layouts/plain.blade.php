@@ -4,10 +4,6 @@
         @include('layouts._head')
     </head>
 <body>
-    <div id="app">
-        @yield('content')
-    </div>
-
-    @include('layouts._scripts')
+    @yield('content')
 </body>
 </html>
