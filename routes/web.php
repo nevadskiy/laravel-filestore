@@ -3,10 +3,11 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/account/connect', 'Account\ConnectController@index')->name('account.connect');
 
 Route::group([
     'prefix' => 'account',
-    'middleware' => ['auth'],
+    'middleware' => ['auth', 'need.stripe'],
     'namespace' => 'Account',
 ], function () {
     Route::get('/', 'AccountController@index')->name('account.index');

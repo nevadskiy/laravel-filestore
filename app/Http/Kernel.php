@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\AbortIfNotAdmin::class,
+        'need.stripe' => \App\Http\Middleware\RedirectIfStripeNotConnected::class,
     ];
 
     /**
