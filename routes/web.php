@@ -4,6 +4,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/account/connect', 'Account\ConnectController@index')->name('account.connect');
+Route::get('/account/connect/complete', 'Account\ConnectController@complete')->name('account.complete');
 
 Route::group([
     'prefix' => 'account',

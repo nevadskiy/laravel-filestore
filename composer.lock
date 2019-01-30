@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49228aa7600f673eda684faebab2b2ac",
+    "content-hash": "f896ce8b8a283b0d6b63226b1c92c5c2",
     "packages": [
         {
             "name": "chumper/zipper",
