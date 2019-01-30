@@ -5,6 +5,7 @@ namespace App;
 use App\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable
 {
@@ -50,5 +51,22 @@ class User extends Authenticatable
     public function sales()
     {
         return $this->hasMany(Sale::class);
+    }
+
+    public function saleValueOverLifetime()
+    {
+        return $this->sales->sum('sale_price');
+    }
+
+    public function saleValueThisMonth()
+    {
+        $startPoint = Carbon::now()->startOfMonth();
+        $endPoint = (clone $startPoint)->endOfMonth();
+
+        return $this->sales()
+            ->whereBetween('created_at', [
+                $startPoint, $endPoint
+            ])
+            ->sum('sale_price');
     }
 }
