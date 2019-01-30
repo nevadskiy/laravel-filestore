@@ -1,4 +1,4 @@
-<form action="{{ route('checkout.free', $file) }}" method="POST">
+<form action="{{ route('checkout.payment', $file) }}" method="POST">
     @csrf
 
     ${{ $file->price }}
